@@ -21,13 +21,18 @@ namespace WinFormsLab
             kek.Text = "12.12.2000";
             kek.SubItems.Add("18:20");
             kek.SubItems.Add("Sleep");
-            listViewTasks.Items.Add(kek); 
-            
+            listViewTasks.Items.Add(kek);
+            comboBoxTask.Items.AddRange(new string[] { EvenCategoryLab.Meeting.ToString(), EvenCategoryLab.Memo.ToString(), EvenCategoryLab.Task.ToString() });
             
             
         }
 
         private void Organizer_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        void Build()
         {
 
         }

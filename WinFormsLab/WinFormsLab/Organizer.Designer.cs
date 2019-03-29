@@ -37,7 +37,7 @@
             this.HeaderEvent = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.radioButtonAllByCategory = new System.Windows.Forms.RadioButton();
             this.radioButtonAllEvents = new System.Windows.Forms.RadioButton();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxTask = new System.Windows.Forms.ComboBox();
             this.buttonFilter = new System.Windows.Forms.Button();
             this.buttonFind = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
@@ -68,7 +68,7 @@
             // View
             // 
             this.tableLayoutPanel2.SetColumnSpan(this.View, 3);
-            this.View.Controls.Add(this.comboBox1);
+            this.View.Controls.Add(this.comboBoxTask);
             this.View.Controls.Add(this.radioButtonAllEvents);
             this.View.Controls.Add(this.radioButtonAllByCategory);
             this.View.Location = new System.Drawing.Point(3, 3);
@@ -146,13 +146,13 @@
             this.radioButtonAllEvents.Text = "All events";
             this.radioButtonAllEvents.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // comboBoxTask
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(244, 19);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(264, 21);
-            this.comboBox1.TabIndex = 2;
+            this.comboBoxTask.FormattingEnabled = true;
+            this.comboBoxTask.Location = new System.Drawing.Point(244, 19);
+            this.comboBoxTask.Name = "comboBoxTask";
+            this.comboBoxTask.Size = new System.Drawing.Size(264, 21);
+            this.comboBoxTask.TabIndex = 2;
             // 
             // buttonFilter
             // 
@@ -203,7 +203,7 @@
         private System.Windows.Forms.ColumnHeader HeaderDate;
         private System.Windows.Forms.ColumnHeader HeaderTime;
         private System.Windows.Forms.ColumnHeader HeaderEvent;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxTask;
         private System.Windows.Forms.RadioButton radioButtonAllEvents;
         private System.Windows.Forms.RadioButton radioButtonAllByCategory;
         private System.Windows.Forms.Button buttonFilter;
