@@ -15,7 +15,7 @@ namespace WinFormsLab
         public Organizer(string TextFromStart)
         {
             
-            InitializeComponent(TextFromStart);
+            InitializeComponent();
             this.Text = Name + " for " + TextFromStart;
         }
 
