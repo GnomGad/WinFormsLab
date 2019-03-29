@@ -31,7 +31,13 @@ namespace WinFormsLab
 
         }
     }
-
+    /// <summary>
+    /// Читатает, если ничего не читает то лови нуль, создат форму нужную, если файл файл пустой то тож нуль
+    /// потом письмо, в методе кек я сделал то, как должен выглядеть заполняющий алгоритм
+    /// читаешь, если файл пустой то закидываем просто туда наш элемент, если он полный, то
+    /// создадим новый объект, с длинной на 1 больщше, в цикле заполняем его из того, что прочли и в конце
+    /// добавляем то, что хотели, потом на сериализацию отправляем, шоб та заполнила
+    /// </summary>
     public class OrganizerFile
     {
         public void kek()// тестовый стенд
@@ -85,7 +91,10 @@ namespace WinFormsLab
                 return newXML;
             }  
         }
-        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Oxml">Не забуь его заполнить</param>
         public void SerializeFileWrite(OrganizerXML[] Oxml)
         {
             FileInfo Menu = new FileInfo(Constants.FileTask_xml);
