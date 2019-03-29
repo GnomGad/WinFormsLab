@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace WinFormsLab
@@ -53,7 +54,11 @@ namespace WinFormsLab
                 {
                     if (menu.CheckLogin(StrucAuto.Login, StructAutorize.Login) && menu.CheckPassword(StrucAuto.Password, StructAutorize.Password))
                     {
-                        MessageBox.Show("Есть такой логин");
+                        //место входа
+                        
+                        Organizer MenuOrganizer = new Organizer(StructAutorize.Login);
+                        MenuOrganizer.Show();
+                        MessageBox.Show("Добро пожаловать " + StructAutorize.Login, "Вход", MessageBoxButtons.OK);
                         tus = true;
                         textBoxLogin.Text = "";
                         textBoxPassword.Text = "";

@@ -71,12 +71,21 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="InterfaceStart.cs" />
+    <Compile Include="Organizer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Organizer.Designer.cs">
+      <DependentUpon>Organizer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StartMenu.cs" />
     <Compile Include="Structs.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Organizer.resx">
+      <DependentUpon>Organizer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
