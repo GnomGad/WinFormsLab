@@ -32,10 +32,14 @@
             this.View = new System.Windows.Forms.GroupBox();
             this.groupBoxOperations = new System.Windows.Forms.GroupBox();
             this.listViewTasks = new System.Windows.Forms.ListView();
-            this.Date = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Time = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Event = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.HeaderDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.HeaderTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.HeaderEvent = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.radioButtonAllByCategory = new System.Windows.Forms.RadioButton();
+            this.radioButtonAllEvents = new System.Windows.Forms.RadioButton();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel2.SuspendLayout();
+            this.View.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel2
@@ -60,6 +64,9 @@
             // View
             // 
             this.tableLayoutPanel2.SetColumnSpan(this.View, 3);
+            this.View.Controls.Add(this.comboBox1);
+            this.View.Controls.Add(this.radioButtonAllEvents);
+            this.View.Controls.Add(this.radioButtonAllByCategory);
             this.View.Location = new System.Drawing.Point(3, 3);
             this.View.Name = "View";
             this.View.Size = new System.Drawing.Size(514, 107);
@@ -80,9 +87,9 @@
             // listViewTasks
             // 
             this.listViewTasks.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.Date,
-            this.Time,
-            this.Event});
+            this.HeaderDate,
+            this.HeaderTime,
+            this.HeaderEvent});
             this.tableLayoutPanel2.SetColumnSpan(this.listViewTasks, 3);
             this.listViewTasks.Location = new System.Drawing.Point(3, 119);
             this.listViewTasks.Name = "listViewTasks";
@@ -91,18 +98,54 @@
             this.listViewTasks.UseCompatibleStateImageBehavior = false;
             this.listViewTasks.View = System.Windows.Forms.View.Details;
             // 
-            // Date
+            // HeaderDate
             // 
-            this.Date.Text = "Date";
-            this.Date.Width = 90;
+            this.HeaderDate.Text = "Date";
+            this.HeaderDate.Width = 99;
             // 
-            // Time
+            // HeaderTime
             // 
-            this.Time.Text = "Time";
+            this.HeaderTime.Text = "Time";
+            this.HeaderTime.Width = 70;
             // 
-            // Event
+            // HeaderEvent
             // 
-            this.Event.Text = "Event";
+            this.HeaderEvent.Text = "Event";
+            this.HeaderEvent.Width = 335;
+            // 
+            // radioButtonAllByCategory
+            // 
+            this.radioButtonAllByCategory.AutoSize = true;
+            this.radioButtonAllByCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.radioButtonAllByCategory.ForeColor = System.Drawing.Color.Teal;
+            this.radioButtonAllByCategory.Location = new System.Drawing.Point(14, 29);
+            this.radioButtonAllByCategory.Name = "radioButtonAllByCategory";
+            this.radioButtonAllByCategory.Size = new System.Drawing.Size(151, 28);
+            this.radioButtonAllByCategory.TabIndex = 0;
+            this.radioButtonAllByCategory.TabStop = true;
+            this.radioButtonAllByCategory.Text = "All by category";
+            this.radioButtonAllByCategory.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonAllEvents
+            // 
+            this.radioButtonAllEvents.AutoSize = true;
+            this.radioButtonAllEvents.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.radioButtonAllEvents.ForeColor = System.Drawing.Color.Teal;
+            this.radioButtonAllEvents.Location = new System.Drawing.Point(15, 58);
+            this.radioButtonAllEvents.Name = "radioButtonAllEvents";
+            this.radioButtonAllEvents.Size = new System.Drawing.Size(109, 28);
+            this.radioButtonAllEvents.TabIndex = 1;
+            this.radioButtonAllEvents.TabStop = true;
+            this.radioButtonAllEvents.Text = "All events";
+            this.radioButtonAllEvents.UseVisualStyleBackColor = true;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(244, 19);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(264, 21);
+            this.comboBox1.TabIndex = 2;
             // 
             // Organizer
             // 
@@ -110,6 +153,8 @@
             this.Controls.Add(this.tableLayoutPanel2);
             this.Name = "Organizer";
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.View.ResumeLayout(false);
+            this.View.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -120,8 +165,11 @@
         private System.Windows.Forms.GroupBox View;
         private System.Windows.Forms.GroupBox groupBoxOperations;
         private System.Windows.Forms.ListView listViewTasks;
-        private System.Windows.Forms.ColumnHeader Date;
-        private System.Windows.Forms.ColumnHeader Time;
-        private System.Windows.Forms.ColumnHeader Event;
+        private System.Windows.Forms.ColumnHeader HeaderDate;
+        private System.Windows.Forms.ColumnHeader HeaderTime;
+        private System.Windows.Forms.ColumnHeader HeaderEvent;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.RadioButton radioButtonAllEvents;
+        private System.Windows.Forms.RadioButton radioButtonAllByCategory;
     }
 }
