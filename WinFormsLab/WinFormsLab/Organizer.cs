@@ -36,6 +36,8 @@ namespace WinFormsLab
             kek.SubItems.Add("18:20");
             kek.SubItems.Add("Sleep");
             listViewTasks.Items.Add(kek);
+            OrganizerFile kek1 = new OrganizerFile();
+            kek1.kek();
         }
 
         void initCombobox()
@@ -43,5 +45,9 @@ namespace WinFormsLab
             comboBoxTask.Items.AddRange(new string[] { EvenCategoryLab.Meeting.ToString(), EvenCategoryLab.Memo.ToString(), EvenCategoryLab.Task.ToString() });
         }
 
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
