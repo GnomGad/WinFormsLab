@@ -14,6 +14,7 @@ namespace WinFormsLab
     public class Constants
     {
         public const string FileAutorizarion_dat = @"Authorization.dat";
+        public const string FileTask_xml = @"Tasks.xml";
     }
 
 }

@@ -98,8 +98,10 @@
             this.HeaderTime,
             this.HeaderEvent});
             this.tableLayoutPanel2.SetColumnSpan(this.listViewTasks, 3);
+            this.listViewTasks.GridLines = true;
             this.listViewTasks.Location = new System.Drawing.Point(3, 119);
             this.listViewTasks.Name = "listViewTasks";
+            this.listViewTasks.ShowItemToolTips = true;
             this.listViewTasks.Size = new System.Drawing.Size(514, 408);
             this.listViewTasks.TabIndex = 1;
             this.listViewTasks.UseCompatibleStateImageBehavior = false;

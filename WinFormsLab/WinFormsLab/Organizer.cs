@@ -17,24 +17,31 @@ namespace WinFormsLab
             
             InitializeComponent();
             this.Text = Name + " for " + TextFromStart;
-            ListViewItem kek = new ListViewItem();
-            kek.Text = "12.12.2000";
-            kek.SubItems.Add("18:20");
-            kek.SubItems.Add("Sleep");
-            listViewTasks.Items.Add(kek);
-            comboBoxTask.Items.AddRange(new string[] { EvenCategoryLab.Meeting.ToString(), EvenCategoryLab.Memo.ToString(), EvenCategoryLab.Task.ToString() });
-            
-            
+            Build();
+
+
         }
 
         private void Organizer_Load(object sender, EventArgs e)
         {
+            
 
         }
 
         void Build()
         {
-
+            initCombobox();
+            ListViewItem kek = new ListViewItem();
+            kek.Text = "12.12.2000";
+            kek.SubItems.Add("18:20");
+            kek.SubItems.Add("Sleep");
+            listViewTasks.Items.Add(kek);
         }
+
+        void initCombobox()
+        {
+            comboBoxTask.Items.AddRange(new string[] { EvenCategoryLab.Meeting.ToString(), EvenCategoryLab.Memo.ToString(), EvenCategoryLab.Task.ToString() });
+        }
+
     }
 }
