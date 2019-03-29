@@ -42,12 +42,14 @@ namespace WinFormsLab
 
         void initCombobox()
         {
-            comboBoxTask.Items.AddRange(new string[] { EvenCategoryLab.Meeting.ToString(), EvenCategoryLab.Memo.ToString(), EvenCategoryLab.Task.ToString() });
+            comboBoxTask.Items.AddRange(new string[] { EvenCategoryLab.Memo.ToString(), EvenCategoryLab.Meeting.ToString(), EvenCategoryLab.Task.ToString() });
+            
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-
+            AddTask addTask = new AddTask();
+            addTask.Show();
         }
     }
 }

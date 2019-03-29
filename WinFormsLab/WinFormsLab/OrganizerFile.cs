@@ -15,14 +15,16 @@ namespace WinFormsLab
         public DateTime Time { get; set; }
         public EvenCategoryLab EventCategory { get; set; }
         public string Text { get; set; }
+        public string Name { get; set; }
 
-        public OrganizerXML(string s,DateTime d,DateTime t, EvenCategoryLab e)
+        public OrganizerXML(string n,string s,DateTime d,DateTime t, EvenCategoryLab e)
         {
             
             Date = d;
             Time = t;
             EventCategory = e;
             Text = s;
+            Name = n;
         }
         public OrganizerXML()
         {
@@ -34,24 +36,74 @@ namespace WinFormsLab
     {
         public void kek()// тестовый стенд
         {
-            OrganizerXML orgz = new OrganizerXML("Sleep",DateTime.Now, DateTime.Now, EvenCategoryLab.Meeting);
-            OrganizerXML orgz1 = new OrganizerXML("Sleep", DateTime.Now, DateTime.Now, EvenCategoryLab.Meeting);
+            OrganizerXML orgz = new OrganizerXML("Жопа","Sleep",DateTime.Now, DateTime.Now, EvenCategoryLab.Meeting);
+            OrganizerXML orgz1 = new OrganizerXML("Горит","Sleep", DateTime.Now, DateTime.Now, EvenCategoryLab.Meeting);
             OrganizerXML[] org = new OrganizerXML[] { orgz, orgz1 };
-            XmlSerializer formatter = new XmlSerializer(typeof(OrganizerXML[]));
-
-            FileStream fs = new FileStream(Constants.FileTask_xml, FileMode.OpenOrCreate);
-            formatter.Serialize(fs, org);
-            fs.Close();
-
-            using (FileStream fs1 = new FileStream(Constants.FileTask_xml, FileMode.OpenOrCreate))
+            OrganizerXML[] org1 = new OrganizerXML[] { org[0],orgz };
+            OrganizerXML[] read = SerializeFileRead();
+            if (read == null)
             {
-                OrganizerXML[] newPerson1 = (OrganizerXML[])formatter.Deserialize(fs1);
-
-                Console.WriteLine("Объект десериализован");
-                foreach(OrganizerXML newPerson in newPerson1)
-                Console.WriteLine("Дата: {0} --- время: {1} -------- категория {2}   --{3}--\r\n", newPerson.Date, newPerson.Time,newPerson.EventCategory,newPerson.Text);
+                SerializeFileWrite(org1);
+            }
+            else
+            {
+                OrganizerXML[] org3 = new OrganizerXML[read.Length + 1];
+                for (int i = 0; i < read.Length; i++)
+                {
+                    org3[i] = read[i];
+                }
+                org3[read.Length] = orgz1;
+                SerializeFileWrite(org3);
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Oxml">Не забуь его заполнить</param>
+        public OrganizerXML[] SerializeFileRead()
+        {
+            bool PainOfRain = true;
+            StartMenu Menu = new StartMenu();
+            if (!Menu.ExistAuthorizationBinaryFile(WinFormsLab.Constants.FileTask_xml))
+            {
+                
+                    
+                Menu.CreateAuthorizationBinaryFile(WinFormsLab.Constants.FileTask_xml);
+                PainOfRain = false;
+
+            }
+            FileInfo fl = new FileInfo(Constants.FileTask_xml);
+            
+            if (!PainOfRain || fl.Length==0)
+                return null;
+
+            XmlSerializer formatter = new XmlSerializer(typeof(OrganizerXML[]));
+            using (FileStream fs1 = new FileStream(Constants.FileTask_xml, FileMode.Open))
+            {
+                OrganizerXML[] newXML = (OrganizerXML[])formatter.Deserialize(fs1);
+                Console.WriteLine("Объект десериализован");
+                return newXML;
+            }  
+        }
+        
+        public void SerializeFileWrite(OrganizerXML[] Oxml)
+        {
+            FileInfo Menu = new FileInfo(Constants.FileTask_xml);
+                if (File.Exists(WinFormsLab.Constants.FileTask_xml))
+                    Menu.Delete();
+            Menu.Create().Close();
+            
+            
+
+
+
+            XmlSerializer formatter = new XmlSerializer(typeof(OrganizerXML[]));
+            FileStream fs = new FileStream(Constants.FileTask_xml, FileMode.OpenOrCreate);
+            formatter.Serialize(fs, Oxml);
+            fs.Close();
+
+        }
+
 
 
 
