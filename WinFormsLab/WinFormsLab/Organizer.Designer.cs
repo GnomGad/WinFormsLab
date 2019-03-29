@@ -38,8 +38,12 @@
             this.radioButtonAllByCategory = new System.Windows.Forms.RadioButton();
             this.radioButtonAllEvents = new System.Windows.Forms.RadioButton();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.buttonFilter = new System.Windows.Forms.Button();
+            this.buttonFind = new System.Windows.Forms.Button();
+            this.buttonAdd = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
             this.View.SuspendLayout();
+            this.groupBoxOperations.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel2
@@ -77,6 +81,9 @@
             // groupBoxOperations
             // 
             this.tableLayoutPanel2.SetColumnSpan(this.groupBoxOperations, 3);
+            this.groupBoxOperations.Controls.Add(this.buttonAdd);
+            this.groupBoxOperations.Controls.Add(this.buttonFind);
+            this.groupBoxOperations.Controls.Add(this.buttonFilter);
             this.groupBoxOperations.Location = new System.Drawing.Point(3, 533);
             this.groupBoxOperations.Name = "groupBoxOperations";
             this.groupBoxOperations.Size = new System.Drawing.Size(514, 78);
@@ -147,6 +154,33 @@
             this.comboBox1.Size = new System.Drawing.Size(264, 21);
             this.comboBox1.TabIndex = 2;
             // 
+            // buttonFilter
+            // 
+            this.buttonFilter.Location = new System.Drawing.Point(6, 23);
+            this.buttonFilter.Name = "buttonFilter";
+            this.buttonFilter.Size = new System.Drawing.Size(146, 45);
+            this.buttonFilter.TabIndex = 0;
+            this.buttonFilter.Text = "Filter";
+            this.buttonFilter.UseVisualStyleBackColor = true;
+            // 
+            // buttonFind
+            // 
+            this.buttonFind.Location = new System.Drawing.Point(185, 23);
+            this.buttonFind.Name = "buttonFind";
+            this.buttonFind.Size = new System.Drawing.Size(146, 45);
+            this.buttonFind.TabIndex = 1;
+            this.buttonFind.Text = "Find";
+            this.buttonFind.UseVisualStyleBackColor = true;
+            // 
+            // buttonAdd
+            // 
+            this.buttonAdd.Location = new System.Drawing.Point(362, 23);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(146, 45);
+            this.buttonAdd.TabIndex = 2;
+            this.buttonAdd.Text = "Add";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            // 
             // Organizer
             // 
             this.ClientSize = new System.Drawing.Size(544, 638);
@@ -155,6 +189,7 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.View.ResumeLayout(false);
             this.View.PerformLayout();
+            this.groupBoxOperations.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -171,5 +206,8 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.RadioButton radioButtonAllEvents;
         private System.Windows.Forms.RadioButton radioButtonAllByCategory;
+        private System.Windows.Forms.Button buttonFilter;
+        private System.Windows.Forms.Button buttonAdd;
+        private System.Windows.Forms.Button buttonFind;
     }
 }
