@@ -72,6 +72,7 @@
             this.HeaderTime,
             this.HeaderEvent});
             this.tableLayoutPanel2.SetColumnSpan(this.listViewTasks, 3);
+            this.listViewTasks.FullRowSelect = true;
             this.listViewTasks.GridLines = true;
             this.listViewTasks.Location = new System.Drawing.Point(3, 119);
             this.listViewTasks.Name = "listViewTasks";
@@ -116,6 +117,7 @@
             this.comboBoxTask.Name = "comboBoxTask";
             this.comboBoxTask.Size = new System.Drawing.Size(264, 21);
             this.comboBoxTask.TabIndex = 2;
+            this.comboBoxTask.SelectedIndexChanged += new System.EventHandler(this.comboBoxTask_SelectedIndexChanged);
             // 
             // radioButtonAllEvents
             // 
@@ -129,6 +131,7 @@
             this.radioButtonAllEvents.TabStop = true;
             this.radioButtonAllEvents.Text = "All events";
             this.radioButtonAllEvents.UseVisualStyleBackColor = true;
+            this.radioButtonAllEvents.CheckedChanged += new System.EventHandler(this.radioButtonAllEvents_CheckedChanged);
             // 
             // radioButtonAllByCategory
             // 
@@ -142,6 +145,7 @@
             this.radioButtonAllByCategory.TabStop = true;
             this.radioButtonAllByCategory.Text = "All by category";
             this.radioButtonAllByCategory.UseVisualStyleBackColor = true;
+            this.radioButtonAllByCategory.CheckedChanged += new System.EventHandler(this.radioButtonAllByCategory_CheckedChanged);
             // 
             // groupBoxOperations
             // 

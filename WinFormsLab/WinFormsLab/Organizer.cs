@@ -31,7 +31,7 @@ namespace WinFormsLab
         void Build()
         {
             initCombobox();
-            AddTextInListView();
+           // AddTextInListView();
         }
         void AddTextInListView()
         {
@@ -45,7 +45,8 @@ namespace WinFormsLab
                 kek.Text = PAIN[0];
                 kek.SubItems.Add(Findings[i].Time.Hour+":"+ Findings[i].Time.Minute);
                 kek.SubItems.Add(Findings[i].Text.ToString());
-                listViewTasks.Items.Add(kek);
+               if(Findings[i].Name == Constants.Name) // что бы не видеть чужих пользователей
+                    listViewTasks.Items.Add(kek);
                // OrganizerFile kek1 = new OrganizerFile();
               //  kek1.kek();
             }
@@ -62,7 +63,26 @@ namespace WinFormsLab
                 kek.Text = PAIN[0];
                 kek.SubItems.Add(Findings[i].Time.Hour + ":" + Findings[i].Time.Minute);
                 kek.SubItems.Add(Findings[i].Text.ToString());
-                listViewTasks.Items.Add(kek);
+                if (Findings[i].Name == Constants.Name) // что бы не видеть чужих пользователей
+                    listViewTasks.Items.Add(kek);
+                // OrganizerFile kek1 = new OrganizerFile();
+                //  kek1.kek();
+            }
+        }
+        void AddTextInListView(EvenCategoryLab Auto)
+        {
+
+            OrganizerFile organizerFile = new OrganizerFile();
+            OrganizerXML[] Findings = organizerFile.SerializeFileRead();
+            for (int i = 0; Findings != null && i < Findings.Length; i++)
+            {
+                ListViewItem kek = new ListViewItem();
+                string[] PAIN = Findings[i].Date.GetDateTimeFormats();
+                kek.Text = PAIN[0];
+                kek.SubItems.Add(Findings[i].Time.Hour + ":" + Findings[i].Time.Minute);
+                kek.SubItems.Add(Findings[i].Text.ToString());
+                if (Findings[i].Name == Constants.Name && Findings[i].EventCategory == Auto) // что бы не видеть чужих пользователей
+                    listViewTasks.Items.Add(kek);
                 // OrganizerFile kek1 = new OrganizerFile();
                 //  kek1.kek();
             }
@@ -71,7 +91,10 @@ namespace WinFormsLab
         {
             listViewTasks.Items.Clear();
         }
-
+        private void DeleteInListView()
+        {
+            listViewTasks.Items.Clear();
+        }
 
         void initCombobox()
         {
@@ -83,8 +106,50 @@ namespace WinFormsLab
         {
             AddTask addTask = new AddTask();
             addTask.Show();
-            addTask.FormClosing += DeleteInListView;
-            addTask.FormClosed += AddTextInListView;
+           // addTask.FormClosing += DeleteInListView;
+            addTask.FormClosed += RefreshList;
+        }
+
+        private void radioButtonAllEvents_CheckedChanged(object sender, EventArgs e)
+        {
+            DeleteInListView();
+            AddTextInListView();
+        }
+
+        private void radioButtonAllByCategory_CheckedChanged(object sender, EventArgs e)
+        {
+            RefreshList();
+        }
+        private void radioButtonAllByCategory_CheckedChanged()
+        {
+            RefreshList();
+        }
+        private void comboBoxTask_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            radioButtonAllByCategory_CheckedChanged();
+        }
+
+        private void RefreshList()
+        {
+            DeleteInListView();
+            if (comboBoxTask.SelectedIndex == 0)
+                AddTextInListView(EvenCategoryLab.Memo);
+            else if (comboBoxTask.SelectedIndex == 1)
+                AddTextInListView(EvenCategoryLab.Meeting);
+            else if (comboBoxTask.SelectedIndex == 2)
+                AddTextInListView(EvenCategoryLab.Task);
+
+        }
+        private void RefreshList(object sender, EventArgs e)
+        {
+            DeleteInListView();
+            if (comboBoxTask.SelectedIndex == 0)
+                AddTextInListView(EvenCategoryLab.Memo);
+            else if (comboBoxTask.SelectedIndex == 1)
+                AddTextInListView(EvenCategoryLab.Meeting);
+            else if (comboBoxTask.SelectedIndex == 2)
+                AddTextInListView(EvenCategoryLab.Task);
+
         }
     }
 }
