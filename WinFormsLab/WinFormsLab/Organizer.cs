@@ -268,9 +268,9 @@ namespace WinFormsLab
                 DeleteInListView();
                 AddTextInListView();
             }
-            if (e.KeyCode == Keys.Delete) 
+            if (e.KeyCode == Keys.Delete)
             {
-                MessageBox.Show("eee");
+                /// сделать это еще
             }
             if(e.Control && e.KeyCode == Keys.A)
             {
