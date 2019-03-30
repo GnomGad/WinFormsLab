@@ -13,10 +13,10 @@ namespace WinFormsLab
 {
     public partial class Start : Form
     {
-        
+
         public Start()
         {
-
+             
             InitializeComponent();
             textBoxLogin.Text = "ЖОПА";
             textBoxPassword.Text = "ГОРИТ";
@@ -57,7 +57,7 @@ namespace WinFormsLab
                     if (menu.CheckLogin(StrucAuto.Login, StructAutorize.Login) && menu.CheckPassword(StrucAuto.Password, StructAutorize.Password))
                     {
                         //место входа
-                        
+                        Constants.Name = StructAutorize.Login;
                         Organizer MenuOrganizer = new Organizer(StructAutorize.Login);
                         MenuOrganizer.Show();
                         MessageBox.Show("Добро пожаловать " + StructAutorize.Login, "Вход", MessageBoxButtons.OK);
