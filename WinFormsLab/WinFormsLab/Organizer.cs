@@ -208,6 +208,8 @@ namespace WinFormsLab
             {
                 saveFileDialog1.DefaultExt = ".xml";
                 saveFileDialog1.ShowDialog();
+                if (saveFileDialog1.FileName == null)
+                    return;
                 bool test = true;
                 Constants.CreateTxtFilePaths();
                 string[] tmp = Constants.ReadPaths();
@@ -258,11 +260,23 @@ namespace WinFormsLab
             }
             if (e.Control && e.KeyCode == Keys.O)
             {
+                
                 openFileDialog1.ShowDialog();
+                if (openFileDialog1.FileName == null)
+                    return;
+                Constants.FileTask_xml = openFileDialog1.FileName;
+                DeleteInListView();
+                AddTextInListView();
             }
             if (e.KeyCode == Keys.Delete) 
             {
                 MessageBox.Show("eee");
+            }
+            if(e.Control && e.KeyCode == Keys.A)
+            {
+                Constants.FileTask_xml = Constants.ConstFileTask;
+                DeleteInListView();
+                AddTextInListView();
             }
         }
 

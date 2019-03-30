@@ -19,6 +19,7 @@ namespace WinFormsLab
         public static string FileAutorizarion_dat = @"Authorization.dat";
         public static string FileTask_xml = @"Tasks.xml";
         public const string TxtPathes = "Twix.txt";
+        public const string ConstFileTask = @"Tasks.xml";
         private static int i = 0;
         public static void CreateTxtFilePaths()
         {
