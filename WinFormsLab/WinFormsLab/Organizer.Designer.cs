@@ -81,6 +81,8 @@
             this.listViewTasks.TabIndex = 1;
             this.listViewTasks.UseCompatibleStateImageBehavior = false;
             this.listViewTasks.View = System.Windows.Forms.View.Details;
+            this.listViewTasks.ItemActivate += new System.EventHandler(this.listViewTasks_ItemActivate);
+            this.listViewTasks.Click += new System.EventHandler(this.listViewTasks_Click);
             // 
             // HeaderDate
             // 

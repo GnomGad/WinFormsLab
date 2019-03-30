@@ -151,5 +151,16 @@ namespace WinFormsLab
                 AddTextInListView(EvenCategoryLab.Task);
 
         }
+
+        private void listViewTasks_ItemActivate(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void listViewTasks_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.ListView.SelectedIndexCollection lis = listViewTasks.SelectedIndices;
+            MessageBox.Show(lis[0].ToString());
+        }
     }
 }
