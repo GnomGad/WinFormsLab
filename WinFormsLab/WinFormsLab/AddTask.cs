@@ -102,11 +102,13 @@ namespace WinFormsLab
                 OrganizerXML KEK = Oz;
                 ORGfile.SerializeBrainFileWrite(Oz);
                 MessageBox.Show("Новая метка была добавлена");
+                Close();
+
             }
            
 
             // MessageBox.Show("Новая метка была добавлена");
-            Close();
+            
 
         }
     }

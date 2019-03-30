@@ -49,6 +49,27 @@ namespace WinFormsLab
               //  kek1.kek();
             }
         }
+        void AddTextInListView(object sender, EventArgs e)
+        {
+
+            OrganizerFile organizerFile = new OrganizerFile();
+            OrganizerXML[] Findings = organizerFile.SerializeFileRead();
+            for (int i = 0; Findings != null && i < Findings.Length; i++)
+            {
+                ListViewItem kek = new ListViewItem();
+                kek.Text = Findings[i].Date.Day.ToString();
+                kek.SubItems.Add(Findings[i].Time.TimeOfDay.ToString());
+                kek.SubItems.Add(Findings[i].Text.ToString());
+                listViewTasks.Items.Add(kek);
+                // OrganizerFile kek1 = new OrganizerFile();
+                //  kek1.kek();
+            }
+        }
+        private void DeleteInListView(object sender, EventArgs e)
+        {
+            listViewTasks.Items.Clear();
+        }
+
 
         void initCombobox()
         {
@@ -60,6 +81,8 @@ namespace WinFormsLab
         {
             AddTask addTask = new AddTask();
             addTask.Show();
+            addTask.FormClosing += DeleteInListView;
+            addTask.FormClosed += AddTextInListView;
         }
     }
 }
