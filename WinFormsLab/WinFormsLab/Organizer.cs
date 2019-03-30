@@ -31,13 +31,23 @@ namespace WinFormsLab
         void Build()
         {
             initCombobox();
-            ListViewItem kek = new ListViewItem();
-            kek.Text = "12.12.2000";
-            kek.SubItems.Add("18:20");
-            kek.SubItems.Add("Sleep");
-            listViewTasks.Items.Add(kek);
-            OrganizerFile kek1 = new OrganizerFile();
-            kek1.kek();
+            AddTextInListView();
+        }
+        void AddTextInListView()
+        {
+            
+            OrganizerFile organizerFile = new OrganizerFile();
+            OrganizerXML[] Findings = organizerFile.SerializeFileRead();
+            for (int i = 0;Findings!= null && i < Findings.Length; i++)
+            {
+                ListViewItem kek = new ListViewItem();
+                kek.Text = Findings[i].Date.Day.ToString();
+                kek.SubItems.Add(Findings[i].Time.TimeOfDay.ToString());
+                kek.SubItems.Add(Findings[i].Text.ToString());
+                listViewTasks.Items.Add(kek);
+               // OrganizerFile kek1 = new OrganizerFile();
+              //  kek1.kek();
+            }
         }
 
         void initCombobox()

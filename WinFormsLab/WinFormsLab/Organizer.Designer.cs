@@ -29,20 +29,20 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.View = new System.Windows.Forms.GroupBox();
-            this.groupBoxOperations = new System.Windows.Forms.GroupBox();
             this.listViewTasks = new System.Windows.Forms.ListView();
             this.HeaderDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.HeaderTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.HeaderEvent = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.radioButtonAllByCategory = new System.Windows.Forms.RadioButton();
-            this.radioButtonAllEvents = new System.Windows.Forms.RadioButton();
+            this.groupBoxView = new System.Windows.Forms.GroupBox();
             this.comboBoxTask = new System.Windows.Forms.ComboBox();
-            this.buttonFilter = new System.Windows.Forms.Button();
-            this.buttonFind = new System.Windows.Forms.Button();
+            this.radioButtonAllEvents = new System.Windows.Forms.RadioButton();
+            this.radioButtonAllByCategory = new System.Windows.Forms.RadioButton();
+            this.groupBoxOperations = new System.Windows.Forms.GroupBox();
             this.buttonAdd = new System.Windows.Forms.Button();
+            this.buttonFind = new System.Windows.Forms.Button();
+            this.buttonFilter = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
-            this.View.SuspendLayout();
+            this.groupBoxView.SuspendLayout();
             this.groupBoxOperations.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,7 +53,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 159F));
             this.tableLayoutPanel2.Controls.Add(this.listViewTasks, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.View, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.groupBoxView, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.groupBoxOperations, 0, 2);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -64,32 +64,6 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(520, 614);
             this.tableLayoutPanel2.TabIndex = 0;
-            // 
-            // View
-            // 
-            this.tableLayoutPanel2.SetColumnSpan(this.View, 3);
-            this.View.Controls.Add(this.comboBoxTask);
-            this.View.Controls.Add(this.radioButtonAllEvents);
-            this.View.Controls.Add(this.radioButtonAllByCategory);
-            this.View.Location = new System.Drawing.Point(3, 3);
-            this.View.Name = "View";
-            this.View.Size = new System.Drawing.Size(514, 107);
-            this.View.TabIndex = 0;
-            this.View.TabStop = false;
-            this.View.Text = "groupBoxView";
-            // 
-            // groupBoxOperations
-            // 
-            this.tableLayoutPanel2.SetColumnSpan(this.groupBoxOperations, 3);
-            this.groupBoxOperations.Controls.Add(this.buttonAdd);
-            this.groupBoxOperations.Controls.Add(this.buttonFind);
-            this.groupBoxOperations.Controls.Add(this.buttonFilter);
-            this.groupBoxOperations.Location = new System.Drawing.Point(3, 533);
-            this.groupBoxOperations.Name = "groupBoxOperations";
-            this.groupBoxOperations.Size = new System.Drawing.Size(514, 78);
-            this.groupBoxOperations.TabIndex = 1;
-            this.groupBoxOperations.TabStop = false;
-            this.groupBoxOperations.Text = "Operations";
             // 
             // listViewTasks
             // 
@@ -122,18 +96,26 @@
             this.HeaderEvent.Text = "Event";
             this.HeaderEvent.Width = 335;
             // 
-            // radioButtonAllByCategory
+            // groupBoxView
             // 
-            this.radioButtonAllByCategory.AutoSize = true;
-            this.radioButtonAllByCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioButtonAllByCategory.ForeColor = System.Drawing.Color.Teal;
-            this.radioButtonAllByCategory.Location = new System.Drawing.Point(14, 29);
-            this.radioButtonAllByCategory.Name = "radioButtonAllByCategory";
-            this.radioButtonAllByCategory.Size = new System.Drawing.Size(151, 28);
-            this.radioButtonAllByCategory.TabIndex = 0;
-            this.radioButtonAllByCategory.TabStop = true;
-            this.radioButtonAllByCategory.Text = "All by category";
-            this.radioButtonAllByCategory.UseVisualStyleBackColor = true;
+            this.tableLayoutPanel2.SetColumnSpan(this.groupBoxView, 3);
+            this.groupBoxView.Controls.Add(this.comboBoxTask);
+            this.groupBoxView.Controls.Add(this.radioButtonAllEvents);
+            this.groupBoxView.Controls.Add(this.radioButtonAllByCategory);
+            this.groupBoxView.Location = new System.Drawing.Point(3, 3);
+            this.groupBoxView.Name = "groupBoxView";
+            this.groupBoxView.Size = new System.Drawing.Size(514, 107);
+            this.groupBoxView.TabIndex = 0;
+            this.groupBoxView.TabStop = false;
+            this.groupBoxView.Text = "View";
+            // 
+            // comboBoxTask
+            // 
+            this.comboBoxTask.FormattingEnabled = true;
+            this.comboBoxTask.Location = new System.Drawing.Point(244, 19);
+            this.comboBoxTask.Name = "comboBoxTask";
+            this.comboBoxTask.Size = new System.Drawing.Size(264, 21);
+            this.comboBoxTask.TabIndex = 2;
             // 
             // radioButtonAllEvents
             // 
@@ -148,31 +130,31 @@
             this.radioButtonAllEvents.Text = "All events";
             this.radioButtonAllEvents.UseVisualStyleBackColor = true;
             // 
-            // comboBoxTask
+            // radioButtonAllByCategory
             // 
-            this.comboBoxTask.FormattingEnabled = true;
-            this.comboBoxTask.Location = new System.Drawing.Point(244, 19);
-            this.comboBoxTask.Name = "comboBoxTask";
-            this.comboBoxTask.Size = new System.Drawing.Size(264, 21);
-            this.comboBoxTask.TabIndex = 2;
+            this.radioButtonAllByCategory.AutoSize = true;
+            this.radioButtonAllByCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.radioButtonAllByCategory.ForeColor = System.Drawing.Color.Teal;
+            this.radioButtonAllByCategory.Location = new System.Drawing.Point(14, 29);
+            this.radioButtonAllByCategory.Name = "radioButtonAllByCategory";
+            this.radioButtonAllByCategory.Size = new System.Drawing.Size(151, 28);
+            this.radioButtonAllByCategory.TabIndex = 0;
+            this.radioButtonAllByCategory.TabStop = true;
+            this.radioButtonAllByCategory.Text = "All by category";
+            this.radioButtonAllByCategory.UseVisualStyleBackColor = true;
             // 
-            // buttonFilter
+            // groupBoxOperations
             // 
-            this.buttonFilter.Location = new System.Drawing.Point(6, 23);
-            this.buttonFilter.Name = "buttonFilter";
-            this.buttonFilter.Size = new System.Drawing.Size(146, 45);
-            this.buttonFilter.TabIndex = 0;
-            this.buttonFilter.Text = "Filter";
-            this.buttonFilter.UseVisualStyleBackColor = true;
-            // 
-            // buttonFind
-            // 
-            this.buttonFind.Location = new System.Drawing.Point(185, 23);
-            this.buttonFind.Name = "buttonFind";
-            this.buttonFind.Size = new System.Drawing.Size(146, 45);
-            this.buttonFind.TabIndex = 1;
-            this.buttonFind.Text = "Find";
-            this.buttonFind.UseVisualStyleBackColor = true;
+            this.tableLayoutPanel2.SetColumnSpan(this.groupBoxOperations, 3);
+            this.groupBoxOperations.Controls.Add(this.buttonAdd);
+            this.groupBoxOperations.Controls.Add(this.buttonFind);
+            this.groupBoxOperations.Controls.Add(this.buttonFilter);
+            this.groupBoxOperations.Location = new System.Drawing.Point(3, 533);
+            this.groupBoxOperations.Name = "groupBoxOperations";
+            this.groupBoxOperations.Size = new System.Drawing.Size(514, 78);
+            this.groupBoxOperations.TabIndex = 1;
+            this.groupBoxOperations.TabStop = false;
+            this.groupBoxOperations.Text = "Operations";
             // 
             // buttonAdd
             // 
@@ -184,14 +166,32 @@
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
+            // buttonFind
+            // 
+            this.buttonFind.Location = new System.Drawing.Point(185, 23);
+            this.buttonFind.Name = "buttonFind";
+            this.buttonFind.Size = new System.Drawing.Size(146, 45);
+            this.buttonFind.TabIndex = 1;
+            this.buttonFind.Text = "Find";
+            this.buttonFind.UseVisualStyleBackColor = true;
+            // 
+            // buttonFilter
+            // 
+            this.buttonFilter.Location = new System.Drawing.Point(6, 23);
+            this.buttonFilter.Name = "buttonFilter";
+            this.buttonFilter.Size = new System.Drawing.Size(146, 45);
+            this.buttonFilter.TabIndex = 0;
+            this.buttonFilter.Text = "Filter";
+            this.buttonFilter.UseVisualStyleBackColor = true;
+            // 
             // Organizer
             // 
             this.ClientSize = new System.Drawing.Size(544, 638);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Name = "Organizer";
             this.tableLayoutPanel2.ResumeLayout(false);
-            this.View.ResumeLayout(false);
-            this.View.PerformLayout();
+            this.groupBoxView.ResumeLayout(false);
+            this.groupBoxView.PerformLayout();
             this.groupBoxOperations.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -200,7 +200,7 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.GroupBox View;
+        private System.Windows.Forms.GroupBox groupBoxView;
         private System.Windows.Forms.GroupBox groupBoxOperations;
         private System.Windows.Forms.ListView listViewTasks;
         private System.Windows.Forms.ColumnHeader HeaderDate;

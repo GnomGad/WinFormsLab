@@ -113,8 +113,43 @@ namespace WinFormsLab
 
         }
 
+        public void SerializeOneFileWrite(OrganizerXML oxml)
+        {
+            FileInfo Menu = new FileInfo(Constants.FileTask_xml);
+            if (File.Exists(WinFormsLab.Constants.FileTask_xml))
+                Menu.Delete();
+            Menu.Create().Close();
 
+            OrganizerXML[] Axml = { oxml };
+            XmlSerializer formatter = new XmlSerializer(typeof(OrganizerXML[]));
+            FileStream fs = new FileStream(Constants.FileTask_xml, FileMode.OpenOrCreate);
+            formatter.Serialize(fs, Axml);
+            fs.Close();
+        }
 
+        /// <summary>
+        /// Крч, он прочтет, если файл пустой то добавит в файл переданный файл
+        /// если не один то и проблем не будет особо
+        /// </summary>
+        /// <param name="Onexml"></param>
+        public void SerializeBrainFileWrite(OrganizerXML Onexml)
+        {
+            OrganizerXML[] read = SerializeFileRead();
+            if (read == null)
+            {
+                SerializeOneFileWrite(Onexml);
+            }
+            else
+            {
+                OrganizerXML[] org3 = new OrganizerXML[read.Length + 1];
+                for (int i = 0; i < read.Length; i++)
+                {
+                    org3[i] = read[i];
+                }
+                org3[read.Length] = Onexml;
+                SerializeFileWrite(org3);
+            }
+        }
 
     }
     

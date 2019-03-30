@@ -38,15 +38,15 @@ namespace WinFormsLab
         private void button1_Click(object sender, EventArgs e)
         {
             OrganizerXML Oz = new OrganizerXML();
-            Oz.Time =dateTimePicker1.Value;
+            OrganizerFile ORGfile = new OrganizerFile();
+            Oz.Time =dateTimePicker1.Value.Date;
             Oz.Date = monthCalendar1.SelectionRange.Start;
             Oz.Text = textBox1.Text;
             Oz.EventCategory = (EvenCategoryLab)comboBox1.SelectedIndex;
             Oz.Name = "Привет";
-            XmlSerializer formatter = new XmlSerializer(typeof(OrganizerXML));
-            FileStream fs = new FileStream(Constants.FileTask_xml, FileMode.OpenOrCreate);
-            formatter.Serialize(fs, Oz);
-            fs.Close();
+            //OrganizerXML KEK = Oz;
+            ORGfile.SerializeBrainFileWrite(Oz);
+            
             MessageBox.Show("Новая метка была добавлена");
             Close();
 
