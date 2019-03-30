@@ -30,7 +30,9 @@ namespace WinFormsLab
 
         void Build()
         {
+           
             initCombobox();
+          //  listViewTasks.ContextMenu = this.menuStrip1.ContextMenu;
            // AddTextInListView();
         }
         void AddTextInListView()
@@ -102,6 +104,17 @@ namespace WinFormsLab
             
         }
 
+        void RemoveElement(int elem)
+        {
+            OrganizerFile organizerFile = new OrganizerFile();
+            OrganizerXML[] Findings = organizerFile.SerializeFileRead();
+            for (int i = 0; Findings != null && i < Findings.Length; i++)
+            {
+                ListViewItem ForWrite = new ListViewItem();// перезаполненный массив для вывода
+                   
+               
+            }
+        }
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             AddTask addTask = new AddTask();
@@ -128,7 +141,7 @@ namespace WinFormsLab
         {
             radioButtonAllByCategory_CheckedChanged();
         }
-
+        
         private void RefreshList()
         {
             DeleteInListView();
@@ -159,8 +172,42 @@ namespace WinFormsLab
 
         private void listViewTasks_Click(object sender, EventArgs e)
         {
+
+            //System.Windows.Forms.ListView.SelectedIndexCollection lis = listViewTasks.SelectedIndices;
+              //MessageBox.Show(lis[0].ToString());
+            
+        }
+
+        private void listViewTasks_ContextMenuStripChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void toolStripMenuItemEdit_Click(object sender, EventArgs e)// edit
+        {
+
+        }
+
+        private void toolStripMenuItemRemove_Click(object sender, EventArgs e)// remove
+        {
             System.Windows.Forms.ListView.SelectedIndexCollection lis = listViewTasks.SelectedIndices;
-            MessageBox.Show(lis[0].ToString());
+
+            if (listViewTasks.SelectedIndices.Count > 0)
+                RemoveElement(lis[0]);
+        }
+
+        private void Organizer_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            MessageBox.Show(e.KeyData.ToString());
+        }
+
+        private void Organizer_KeyDown(object sender, KeyEventArgs e)
+        {
+            MessageBox.Show(e.KeyData.ToString());
         }
     }
 }
