@@ -41,8 +41,9 @@ namespace WinFormsLab
             for (int i = 0;Findings!= null && i < Findings.Length; i++)
             {
                 ListViewItem kek = new ListViewItem();
-                kek.Text = Findings[i].Date.Day.ToString();
-                kek.SubItems.Add(Findings[i].Time.TimeOfDay.ToString());
+                string[] PAIN = Findings[i].Date.GetDateTimeFormats();
+                kek.Text = PAIN[0];
+                kek.SubItems.Add(Findings[i].Time.Hour+":"+ Findings[i].Time.Minute);
                 kek.SubItems.Add(Findings[i].Text.ToString());
                 listViewTasks.Items.Add(kek);
                // OrganizerFile kek1 = new OrganizerFile();
@@ -57,8 +58,9 @@ namespace WinFormsLab
             for (int i = 0; Findings != null && i < Findings.Length; i++)
             {
                 ListViewItem kek = new ListViewItem();
-                kek.Text = Findings[i].Date.Day.ToString();
-                kek.SubItems.Add(Findings[i].Time.TimeOfDay.ToString());
+                string[] PAIN = Findings[i].Date.GetDateTimeFormats();
+                kek.Text = PAIN[0];
+                kek.SubItems.Add(Findings[i].Time.Hour + ":" + Findings[i].Time.Minute);
                 kek.SubItems.Add(Findings[i].Text.ToString());
                 listViewTasks.Items.Add(kek);
                 // OrganizerFile kek1 = new OrganizerFile();
