@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace WinFormsLab
 {
@@ -200,14 +201,71 @@ namespace WinFormsLab
                 RemoveElement(lis[0]);
         }
 
-        private void Organizer_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-        {
-            MessageBox.Show(e.KeyData.ToString());
-        }
 
         private void Organizer_KeyDown(object sender, KeyEventArgs e)
         {
-            MessageBox.Show(e.KeyData.ToString());
+            if(e.Control&& e.KeyCode == Keys.S)
+            {
+                saveFileDialog1.DefaultExt = ".xml";
+                saveFileDialog1.ShowDialog();
+                bool test = true;
+                Constants.CreateTxtFilePaths();
+                string[] tmp = Constants.ReadPaths();
+                foreach (string str in tmp)
+                { 
+                    if (str == saveFileDialog1.FileName)
+                    
+                       test = false;
+                }
+                if (test)
+                {
+                    Constants.WritePaths(saveFileDialog1.FileName);
+                }
+                int i = 0, count = 0;
+
+                OrganizerFile kek = new OrganizerFile();
+                OrganizerXML[] XML = kek.SerializeFileRead();
+                for (i = 0; i < XML.Length; i++)
+                {
+                    if (!radioButtonAllEvents.Checked)
+                    {
+                        if (XML[i].Name == Constants.Name && XML[i].EventCategory == (EvenCategoryLab)comboBoxTask.SelectedIndex)
+                        {
+                            count++;
+                        }
+                    }
+                    else count = XML.Length;
+                }
+                OrganizerXML[] xxx = new OrganizerXML[count];
+                i = 0;
+                if (!radioButtonAllEvents.Checked) {
+                    for (int k = 0; i < XML.Length; i++)
+                    {
+                        if (XML[i].Name == Constants.Name && XML[i].EventCategory == (EvenCategoryLab)comboBoxTask.SelectedIndex)
+                        {
+                            xxx[k++] = XML[i];
+                        }
+                    }
+                }
+                else
+                {
+                    xxx = XML;
+                }
+                if (File.Exists(saveFileDialog1.FileName))
+                    File.Delete(saveFileDialog1.FileName);
+                kek.SerializeFileWrite(xxx, saveFileDialog1.FileName);
+                
+            }
+            if (e.Control && e.KeyCode == Keys.O)
+            {
+                openFileDialog1.ShowDialog();
+            }
+            if (e.KeyCode == Keys.Delete) 
+            {
+                MessageBox.Show("eee");
+            }
         }
+
+
     }
 }

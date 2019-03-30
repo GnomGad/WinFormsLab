@@ -112,6 +112,23 @@ namespace WinFormsLab
             fs.Close();
 
         }
+        public void SerializeFileWrite(OrganizerXML[] Oxml,string path)
+        {
+            FileInfo Menu = new FileInfo(path);
+            if (File.Exists(path))
+                Menu.Delete();
+            Menu.Create().Close();
+
+
+
+
+
+            XmlSerializer formatter = new XmlSerializer(typeof(OrganizerXML[]));
+            FileStream fs = new FileStream(path, FileMode.OpenOrCreate);
+            formatter.Serialize(fs, Oxml);
+            fs.Close();
+
+        }
 
         public void SerializeOneFileWrite(OrganizerXML oxml)
         {
@@ -126,6 +143,7 @@ namespace WinFormsLab
             formatter.Serialize(fs, Axml);
             fs.Close();
         }
+
 
         /// <summary>
         /// Крч, он прочтет, если файл пустой то добавит в файл переданный файл
