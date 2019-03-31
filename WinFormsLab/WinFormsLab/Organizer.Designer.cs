@@ -55,6 +55,9 @@
             // 
             // tableLayoutPanel2
             // 
+            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -69,7 +72,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 78.07757F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 83F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(520, 614);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(528, 614);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // listViewTasks
@@ -132,13 +135,16 @@
             // 
             // groupBoxView
             // 
+            this.groupBoxView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel2.SetColumnSpan(this.groupBoxView, 3);
             this.groupBoxView.Controls.Add(this.comboBoxTask);
             this.groupBoxView.Controls.Add(this.radioButtonAllEvents);
             this.groupBoxView.Controls.Add(this.radioButtonAllByCategory);
             this.groupBoxView.Location = new System.Drawing.Point(3, 3);
             this.groupBoxView.Name = "groupBoxView";
-            this.groupBoxView.Size = new System.Drawing.Size(514, 106);
+            this.groupBoxView.Size = new System.Drawing.Size(522, 106);
             this.groupBoxView.TabIndex = 0;
             this.groupBoxView.TabStop = false;
             this.groupBoxView.Text = "View";
@@ -182,13 +188,16 @@
             // 
             // groupBoxOperations
             // 
+            this.groupBoxOperations.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel2.SetColumnSpan(this.groupBoxOperations, 3);
             this.groupBoxOperations.Controls.Add(this.buttonAdd);
             this.groupBoxOperations.Controls.Add(this.buttonFind);
             this.groupBoxOperations.Controls.Add(this.buttonSort);
             this.groupBoxOperations.Location = new System.Drawing.Point(3, 513);
             this.groupBoxOperations.Name = "groupBoxOperations";
-            this.groupBoxOperations.Size = new System.Drawing.Size(514, 77);
+            this.groupBoxOperations.Size = new System.Drawing.Size(522, 77);
             this.groupBoxOperations.TabIndex = 1;
             this.groupBoxOperations.TabStop = false;
             this.groupBoxOperations.Text = "Operations";
@@ -235,7 +244,7 @@
             // 
             // Organizer
             // 
-            this.ClientSize = new System.Drawing.Size(544, 638);
+            this.ClientSize = new System.Drawing.Size(552, 638);
             this.Controls.Add(this.tableLayoutPanel2);
             this.KeyPreview = true;
             this.Name = "Organizer";
