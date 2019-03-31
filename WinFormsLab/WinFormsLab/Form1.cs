@@ -19,8 +19,7 @@ namespace WinFormsLab
              
             InitializeComponent();
             Constants.FileTask_xml = Constants.ConstFileTask;
-            textBoxLogin.Text = "ЖОПА";
-            textBoxPassword.Text = "ГОРИТ";
+
         }
 
         private void checkBoxPassword_CheckedChanged(object sender, EventArgs e)
