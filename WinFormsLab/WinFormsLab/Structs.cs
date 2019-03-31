@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System;
 using System.Windows.Forms;
 public struct StructAutorization
 {
@@ -20,6 +21,7 @@ namespace WinFormsLab
         public static string FileTask_xml = @"Tasks.xml";
         public const string TxtPathes = "Twix.txt";
         public const string ConstFileTask = @"Tasks.xml";
+        public static DateTime FindDate = DateTime.Now;
         private static int i = 0;
         public static void CreateTxtFilePaths()
         {

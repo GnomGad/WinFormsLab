@@ -53,6 +53,7 @@ namespace WinFormsLab
                // OrganizerFile kek1 = new OrganizerFile();
               //  kek1.kek();
             }
+            Constants.XML = Findings;
         }
         void AddTextInListView(OrganizerXML[] Findings)
         {
@@ -73,6 +74,7 @@ namespace WinFormsLab
                 // OrganizerFile kek1 = new OrganizerFile();
                 //  kek1.kek();
             }
+            Constants.XML = Findings;
         }
         void AddTextInListView(object sender, EventArgs e)
         {
@@ -91,6 +93,7 @@ namespace WinFormsLab
                 // OrganizerFile kek1 = new OrganizerFile();
                 //  kek1.kek();
             }
+            Constants.XML = Findings;
         }
         void AddTextInListView(EvenCategoryLab Auto)
         {
@@ -109,14 +112,17 @@ namespace WinFormsLab
                 // OrganizerFile kek1 = new OrganizerFile();
                 //  kek1.kek();
             }
+            Constants.XML = Findings;
         }
         private void DeleteInListView(object sender, EventArgs e)
         {
             listViewTasks.Items.Clear();
+            Constants.XML = null;
         }
         private void DeleteInListView()
         {
             listViewTasks.Items.Clear();
+            Constants.XML = null;
         }
 
         void initCombobox()
@@ -302,12 +308,47 @@ namespace WinFormsLab
 
         private void buttonFind_Click(object sender, EventArgs e)
         {
-            find();
-        }
-        void find()
-        {
+            Find f = new Find();
+            f.Show();
+            f.FormClosed += find;
 
         }
+
+        void find(object sender, EventArgs e)
+        {
+            //string[] s = Constants.FindDate.GetDateTimeFormats();
+            int count = 0;
+            OrganizerFile OrgFile = new OrganizerFile();
+            OrganizerXML[] ReadXML1 = OrgFile.SerializeFileRead();
+            for (int i = 0; i < ReadXML1.Length; i++)
+            {
+                if (ReadXML1[i].Name == Constants.Name && ReadXML1[i].Date == Constants.FindDate)
+                    count++;
+            }
+            OrganizerXML[] ReadXML = new OrganizerXML[count];
+            for (int i = 0, k = 0; i < ReadXML1.Length && k < count; i++)
+            {
+                if (radioButtonAllEvents.Checked)
+                {
+                    if (ReadXML1[i].Name == Constants.Name && ReadXML1[i].Date == Constants.FindDate)
+                    {
+                        ReadXML[k++] = ReadXML1[i];
+                    }
+                }
+                else
+                {
+                    if (ReadXML1[i].Name == Constants.Name && ReadXML1[i].EventCategory == (EvenCategoryLab)comboBoxTask.SelectedIndex && ReadXML1[i].Date == Constants.FindDate)
+                    {
+                        ReadXML[k++] = ReadXML1[i];
+                    }
+                }
+            }
+            DeleteInListView();
+            AddTextInListView(ReadXML);
+            Constants.XML =  ReadXML;
+        }
+
+
         private void buttonSort_Click(object sender, EventArgs e)
         {
             Sort();
@@ -357,6 +398,7 @@ namespace WinFormsLab
 
             DeleteInListView();
             AddTextInListView(ReadXML);
+            Constants.XML =  ReadXML;
 
         }
         void Swap(ref OrganizerXML a, ref OrganizerXML b)
