@@ -22,6 +22,7 @@ namespace WinFormsLab
         public const string TxtPathes = "Twix.txt";
         public const string ConstFileTask = @"Tasks.xml";
         public static DateTime FindDate = DateTime.Now;
+        public static OrganizerXML[] XML = null;
         private static int i = 0;
         public static void CreateTxtFilePaths()
         {

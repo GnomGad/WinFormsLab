@@ -31,7 +31,6 @@ namespace WinFormsLab
 
         void Build()
         {
-           
             initCombobox();
           //  listViewTasks.ContextMenu = this.menuStrip1.ContextMenu;
            // AddTextInListView();
@@ -128,19 +127,47 @@ namespace WinFormsLab
         void initCombobox()
         {
             comboBoxTask.Items.AddRange(new string[] { EvenCategoryLab.Memo.ToString(), EvenCategoryLab.Meeting.ToString(), EvenCategoryLab.Task.ToString() });
+            comboBoxTask.SelectedIndex = 0;
             
         }
 
         void RemoveElement(int elem)
         {
+            int count = 0;
             OrganizerFile organizerFile = new OrganizerFile();
-            OrganizerXML[] Findings = organizerFile.SerializeFileRead();
-            for (int i = 0; Findings != null && i < Findings.Length; i++)
+            OrganizerXML[] XML = new OrganizerXML[Constants.XML.Length - 1];
+            for (int i =0,k =0; Constants.XML !=null && (i < Constants.XML.Length ); i++)
             {
-                ListViewItem ForWrite = new ListViewItem();// перезаполненный массив для вывода
-                   
-               
+                if (elem != i && Constants.XML[i].Name == Constants.Name)
+                    XML[k++] = Constants.XML[i];
+                if (Constants.XML[i].Name != Constants.Name) elem++;
+                        
+            } //а теперь надо зафигарить удаления файла ток в массив
+
+
+
+            DeleteInListView();
+            AddTextInListView(XML);
+            OrganizerXML[] Pain =  organizerFile.SerializeFileRead();
+            OrganizerXML[] Rain = new OrganizerXML[Pain.Length-XML.Length];
+            for(int i=0,k=0; i<Pain.Length;i++)// в Rain запихать все остальные юзера поверх
+            {
+                if (elem != i && Constants.XML[i].Name != Constants.Name)
+                    Rain[k] = Pain[i];
             }
+            OrganizerXML[] ForWrite = new OrganizerXML[Pain.Length-1];
+            for (int i =0; count < XML.Length; count++)// в Rain запихать все остальные юзера поверх
+            {
+                ForWrite[count] = XML[i++];
+            }
+            for(int i =0; count < ForWrite.Length;count++)
+            {
+                ForWrite[count] = Rain[i++];
+            }
+
+
+           // organizerFile.SerializeFileWrite(ForWrite);
+
         }
         private void buttonAdd_Click(object sender, EventArgs e)
         {
@@ -228,6 +255,7 @@ namespace WinFormsLab
         }
 
 
+
         private void Organizer_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.Control&& e.KeyCode == Keys.S)
@@ -281,7 +309,7 @@ namespace WinFormsLab
                 }
                 if (File.Exists(saveFileDialog1.FileName))
                     File.Delete(saveFileDialog1.FileName);
-                kek.SerializeFileWrite(xxx, saveFileDialog1.FileName);
+                kek.SerializeFileWrite(Constants.XML, saveFileDialog1.FileName);
                 
             }
             if (e.Control && e.KeyCode == Keys.O)
