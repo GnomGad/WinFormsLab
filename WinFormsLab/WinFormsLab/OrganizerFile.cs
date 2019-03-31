@@ -79,7 +79,8 @@ namespace WinFormsLab
 
             }
             FileInfo fl = new FileInfo(Constants.FileTask_xml);
-            
+            if (fl == null)
+                return null;
             if (!PainOfRain || fl.Length==0)
                 return null;
 

@@ -18,7 +18,7 @@ namespace WinFormsLab
         {
              
             InitializeComponent();
-            Constants.FileTask_xml =
+            Constants.FileTask_xml = Constants.ConstFileTask;
             textBoxLogin.Text = "ЖОПА";
             textBoxPassword.Text = "ГОРИТ";
         }

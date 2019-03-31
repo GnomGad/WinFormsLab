@@ -44,7 +44,7 @@
             this.groupBoxOperations = new System.Windows.Forms.GroupBox();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonFind = new System.Windows.Forms.Button();
-            this.buttonFilter = new System.Windows.Forms.Button();
+            this.buttonSort = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tableLayoutPanel2.SuspendLayout();
@@ -185,7 +185,7 @@
             this.tableLayoutPanel2.SetColumnSpan(this.groupBoxOperations, 3);
             this.groupBoxOperations.Controls.Add(this.buttonAdd);
             this.groupBoxOperations.Controls.Add(this.buttonFind);
-            this.groupBoxOperations.Controls.Add(this.buttonFilter);
+            this.groupBoxOperations.Controls.Add(this.buttonSort);
             this.groupBoxOperations.Location = new System.Drawing.Point(3, 513);
             this.groupBoxOperations.Name = "groupBoxOperations";
             this.groupBoxOperations.Size = new System.Drawing.Size(514, 77);
@@ -211,25 +211,27 @@
             this.buttonFind.TabIndex = 1;
             this.buttonFind.Text = "Find";
             this.buttonFind.UseVisualStyleBackColor = true;
+            this.buttonFind.Click += new System.EventHandler(this.buttonFind_Click);
             // 
-            // buttonFilter
+            // buttonSort
             // 
-            this.buttonFilter.Location = new System.Drawing.Point(6, 23);
-            this.buttonFilter.Name = "buttonFilter";
-            this.buttonFilter.Size = new System.Drawing.Size(146, 45);
-            this.buttonFilter.TabIndex = 0;
-            this.buttonFilter.Text = "Filter";
-            this.buttonFilter.UseVisualStyleBackColor = true;
+            this.buttonSort.Location = new System.Drawing.Point(6, 23);
+            this.buttonSort.Name = "buttonSort";
+            this.buttonSort.Size = new System.Drawing.Size(146, 45);
+            this.buttonSort.TabIndex = 0;
+            this.buttonSort.Text = "Sort";
+            this.buttonSort.UseVisualStyleBackColor = true;
+            this.buttonSort.Click += new System.EventHandler(this.buttonSort_Click);
             // 
             // saveFileDialog1
             // 
             this.saveFileDialog1.DefaultExt = "*.xml";
             this.saveFileDialog1.FileName = "Save";
-            this.saveFileDialog1.Filter = "Text files(*.xml)|*.txt|All files(*.*)|*.*";
+            this.saveFileDialog1.Filter = "Text files(*.xml)|*.xml|All files(*.*)|*.*";
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.Filter = "Text files(*.xml)|*.txt|All files(*.*)|*.*";
+            this.openFileDialog1.Filter = "Text files(*.xml)|*.xml|All files(*.*)|*.*";
             // 
             // Organizer
             // 
@@ -259,7 +261,7 @@
         private System.Windows.Forms.ComboBox comboBoxTask;
         private System.Windows.Forms.RadioButton radioButtonAllEvents;
         private System.Windows.Forms.RadioButton radioButtonAllByCategory;
-        private System.Windows.Forms.Button buttonFilter;
+        private System.Windows.Forms.Button buttonSort;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonFind;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;

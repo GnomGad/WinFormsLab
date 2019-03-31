@@ -54,6 +54,26 @@ namespace WinFormsLab
               //  kek1.kek();
             }
         }
+        void AddTextInListView(OrganizerXML[] Findings)
+        {
+
+
+            for (int i = 0; Findings != null && i < Findings.Length; i++)
+            {
+                if (Findings[i] != null)
+                {
+                    ListViewItem kek = new ListViewItem();
+                    string[] PAIN = Findings[i].Date.GetDateTimeFormats();
+                    kek.Text = PAIN[0];
+                    kek.SubItems.Add(Findings[i].Time.Hour + ":" + Findings[i].Time.Minute);
+                    kek.SubItems.Add(Findings[i].Text.ToString());
+                    if (Findings[i].Name == Constants.Name) // что бы не видеть чужих пользователей
+                        listViewTasks.Items.Add(kek);
+                }
+                // OrganizerFile kek1 = new OrganizerFile();
+                //  kek1.kek();
+            }
+        }
         void AddTextInListView(object sender, EventArgs e)
         {
 
@@ -262,7 +282,7 @@ namespace WinFormsLab
             {
                 
                 openFileDialog1.ShowDialog();
-                if (openFileDialog1.FileName == null)
+                if (openFileDialog1.FileName == null || openFileDialog1.FileName == "")
                     return;
                 Constants.FileTask_xml = openFileDialog1.FileName;
                 DeleteInListView();
@@ -280,6 +300,71 @@ namespace WinFormsLab
             }
         }
 
+        private void buttonFind_Click(object sender, EventArgs e)
+        {
+            find();
+        }
+        void find()
+        {
+
+        }
+        private void buttonSort_Click(object sender, EventArgs e)
+        {
+            Sort();
+        }
+
+        void Sort()
+        {
+            int count = 0;
+            OrganizerFile OrgFile = new OrganizerFile();
+            OrganizerXML[] ReadXML1 = OrgFile.SerializeFileRead();
+            for(int i =0; i<ReadXML1.Length;i++)
+            {
+                if (ReadXML1[i].Name == Constants.Name)
+                    count++;
+            }
+            OrganizerXML[]  ReadXML = new OrganizerXML[count];
+            for(int i = 0,k=0; i<ReadXML1.Length&& k<count;i++)
+            {
+                if (radioButtonAllEvents.Checked)
+                {
+                    if (ReadXML1[i].Name == Constants.Name)
+                    {
+                        ReadXML[k++] = ReadXML1[i];
+                    }
+                }
+                else
+                {
+                    if (ReadXML1[i].Name == Constants.Name && ReadXML1[i].EventCategory == (EvenCategoryLab)comboBoxTask.SelectedIndex)
+                    {
+                        ReadXML[k++] = ReadXML1[i];
+                    }
+                }
+            }
+            int l = 0;
+            int r = ReadXML.Length-1;
+            for (int i = l; i < r; i++)
+            {
+                int min = i;
+                for (int j = i + 1; j <= r; j++)
+                    if (ReadXML[j] != null&& ReadXML[min]!=null && ReadXML[j].Time.Hour < ReadXML[min].Time.Hour)
+                        min = j;
+                    else if (ReadXML[j] != null && ReadXML[min] != null && ReadXML[j].Time.Minute < ReadXML[min].Time.Minute)
+                        min = j;
+
+               Swap(ref ReadXML[i], ref ReadXML[min]);
+            }
+
+            DeleteInListView();
+            AddTextInListView(ReadXML);
+
+        }
+        void Swap(ref OrganizerXML a, ref OrganizerXML b)
+        {
+            OrganizerXML tmp = a;
+            a = b;
+            b = tmp;
+        }
 
     }
 }

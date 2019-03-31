@@ -11,6 +11,7 @@ namespace WinFormsLab
     {
         public void CreateAuthorizationBinaryFile(string Path)
         {
+            if(Path!=null && Path != "")
             File.CreateText(Path);
         }
 
