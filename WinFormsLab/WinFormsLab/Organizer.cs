@@ -23,17 +23,67 @@ namespace WinFormsLab
 
         }
 
-        private void Organizer_Load(object sender, EventArgs e)
-        {
-            
-
-        }
-
         void Build()
         {
             initCombobox();
-          //  listViewTasks.ContextMenu = this.menuStrip1.ContextMenu;
-           // AddTextInListView();
+            //  listViewTasks.ContextMenu = this.menuStrip1.ContextMenu;
+            // AddTextInListView();
+            
+        }
+        /// <summary>
+        /// УГОЛОК БОЛИ!!!! НЕ ОТКРЫВАТЬ, БОЛЬНО ГЛАЗАМ, А Я ЭТО ДЕЛАЛ
+        /// </summary>
+        /// <param name="k"></param>
+        /// <returns></returns>
+        Color Test(ListViewItem k ) 
+        {
+            /*
+             * шо поделать с интом?
+            */
+           
+            DateTime NowF = DateTime.Now;
+            string Date = k.SubItems[0].Text;
+            string[] ArDateNowf = NowF.Date.GetDateTimeFormats();
+            string DateNowF = ArDateNowf[0];
+            string TimeDate = k.SubItems[1].Text;
+
+            string s = "0";// 3 если там по 1:1 || 1 если там 22:1 || 2 если там 1:22 || 4 если там 22:22
+            string Time = "";
+            if (TimeDate.Length == 4)
+            {
+                if (TimeDate[2] == ':')
+                    Time = TimeDate[0].ToString() + TimeDate[1].ToString() + s.ToString() + TimeDate[3].ToString();
+                else
+                    Time = TimeDate[0].ToString() + s.ToString() + TimeDate[2].ToString() + TimeDate[3].ToString();
+            }
+            else if (TimeDate.Length == 3) Time = s.ToString() + TimeDate[0].ToString() + s.ToString() + TimeDate[2].ToString();
+            else if (TimeDate.Length == 5) Time = TimeDate[0].ToString() + TimeDate[1].ToString() + TimeDate[3].ToString() + TimeDate[4].ToString();
+            //---------------------------------------------------------------------------------------------------------
+            string TimeDateNowf = NowF.Hour+":"+NowF.Minute;
+            string Time1="";
+
+            if (TimeDateNowf.Length == 4)
+            {
+                if (TimeDateNowf[2] == ':')
+                    Time1 = TimeDateNowf[0].ToString() + TimeDateNowf[1].ToString() + s.ToString() + TimeDateNowf[3].ToString();
+                else
+                    Time1 = TimeDateNowf[0].ToString() + s.ToString() + TimeDateNowf[2].ToString() + TimeDateNowf[3].ToString();
+            }
+            else if (TimeDateNowf.Length == 3) Time1 = s.ToString() + TimeDateNowf[0].ToString() + s.ToString() + TimeDateNowf[2].ToString();
+            else if (TimeDateNowf.Length == 5) Time1 = TimeDateNowf[0].ToString() + TimeDateNowf[1].ToString() + TimeDateNowf[3].ToString() + TimeDateNowf[4].ToString();
+
+           
+
+            long DateIntDate = Int64.Parse(Date[6] + "" + Date[7]+"" + Date[8]+"" + Date[9] + "" + Date[3] + "" + Date[4] + "" + Date[0] + "" + Date[1]+""+ Time);
+            long DateIntNowf = Int64.Parse(DateNowF[6] + "" + DateNowF[7] + "" + DateNowF[8] + "" + DateNowF[9] + "" + DateNowF[3] + "" + DateNowF[4] + "" + DateNowF[0] + "" + DateNowF[1]+ ""+ Time1);
+
+             if (DateIntDate <= DateIntNowf)
+               return Color.Red;
+            else if(DateIntDate <= DateIntNowf+10000)
+                return Color.Yellow;
+             else 
+                return Color.LightGreen;
+
         }
         void AddTextInListView()
         {
@@ -49,8 +99,13 @@ namespace WinFormsLab
                     kek.Text = PAIN[0];
                     kek.SubItems.Add(Findings[i].Time.Hour + ":" + Findings[i].Time.Minute);
                     kek.SubItems.Add(Findings[i].Text.ToString());
-                    if (Findings[i].Name == Constants.Name) // что бы не видеть чужих пользователей
+                   
+
+                    if (Findings[i].Name == Constants.Name)
+                    { // что бы не видеть чужих пользователей
+                        kek.BackColor = Test(kek);
                         listViewTasks.Items.Add(kek);
+                    }
                     // OrganizerFile kek1 = new OrganizerFile();
                     //  kek1.kek();
                 }
@@ -70,8 +125,11 @@ namespace WinFormsLab
                     kek.Text = PAIN[0];
                     kek.SubItems.Add(Findings[i].Time.Hour + ":" + Findings[i].Time.Minute);
                     kek.SubItems.Add(Findings[i].Text.ToString());
-                    if (Findings[i].Name == Constants.Name) // что бы не видеть чужих пользователей
+                    if (Findings[i].Name == Constants.Name)
+                    { // что бы не видеть чужих пользователей
+                        kek.BackColor = Test(kek);
                         listViewTasks.Items.Add(kek);
+                    }
                 }
                 // OrganizerFile kek1 = new OrganizerFile();
                 //  kek1.kek();
@@ -92,8 +150,11 @@ namespace WinFormsLab
                     kek.Text = PAIN[0];
                     kek.SubItems.Add(Findings[i].Time.Hour + ":" + Findings[i].Time.Minute);
                     kek.SubItems.Add(Findings[i].Text.ToString());
-                    if (Findings[i].Name == Constants.Name) // что бы не видеть чужих пользователей
+                    if (Findings[i].Name == Constants.Name)
+                    { // что бы не видеть чужих пользователей
+                        kek.BackColor = Test(kek);
                         listViewTasks.Items.Add(kek);
+                    }
                 }
                 // OrganizerFile kek1 = new OrganizerFile();
                 //  kek1.kek();
@@ -114,8 +175,11 @@ namespace WinFormsLab
                     kek.Text = PAIN[0];
                     kek.SubItems.Add(Findings[i].Time.Hour + ":" + Findings[i].Time.Minute);
                     kek.SubItems.Add(Findings[i].Text.ToString());
-                    if (Findings[i].Name == Constants.Name && Findings[i].EventCategory == Auto) // что бы не видеть чужих пользователей
+                    if (Findings[i].Name == Constants.Name && Findings[i].EventCategory == Auto)
+                    { // что бы не видеть чужих пользователей
+                        kek.BackColor = Test(kek);
                         listViewTasks.Items.Add(kek);
+                    }
                 }
                 // OrganizerFile kek1 = new OrganizerFile();
                 //  kek1.kek();
@@ -142,6 +206,7 @@ namespace WinFormsLab
                         {
                             if(Findings[i].EventCategory == Auto)
                             {
+                                kek.BackColor = Test(kek);
                                 listViewTasks.Items.Add(kek);
                             }
                         }
@@ -525,6 +590,8 @@ namespace WinFormsLab
             a = b;
             b = tmp;
         }
+
+
 
     }
 }

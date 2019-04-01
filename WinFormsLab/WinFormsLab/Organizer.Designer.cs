@@ -86,6 +86,7 @@
             this.listViewTasks.FullRowSelect = true;
             this.listViewTasks.GridLines = true;
             this.listViewTasks.Location = new System.Drawing.Point(3, 115);
+            this.listViewTasks.MultiSelect = false;
             this.listViewTasks.Name = "listViewTasks";
             this.listViewTasks.ShowItemToolTips = true;
             this.listViewTasks.Size = new System.Drawing.Size(514, 392);
